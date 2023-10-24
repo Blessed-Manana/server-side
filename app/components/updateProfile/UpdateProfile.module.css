@@ -1,0 +1,96 @@
+.sidebar {
+    background-color: #fff;
+    width: 21%;
+    box-shadow: 1px 2px 3px #aaa9a99f;
+    display: block;
+    min-width: 236.09px;
+    border-radius: 10px;
+}
+
+.sidebar * {
+    transition: all 0.7s ease-in-out;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.profile {
+    background-color: #fff;
+    width: 100%;
+    height: 200px;
+    min-height: 40%;
+    position: relative;
+    border-radius: 10px;
+    background-image: url(../../../public/person-combination.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.file {
+    display: none;
+}
+
+.uploadbtn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadbtn:hover {
+    background-color: #00000086;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+.camera{
+    width: 50px;
+    height: 50px;
+    filter: invert();
+    opacity: 0%;
+}
+
+.uploadbtn:hover.uploadbtn .camera {
+    opacity: 100%;
+}
+
+.profile h2 {
+    position: absolute;
+    bottom: 0;
+    margin: 5px 10px;
+    color: #ffffff;
+    text-shadow: 1px 2px 3px #080707;
+}
+
+.info {
+    padding: 20px 10px;
+}
+
+.info h3 {
+    font-family: 'Lobster', cursive;
+    color: transparent;
+    text-shadow: 1px 1px 1px #68626200, 0 0 0 #7979798f;
+}
+
+.info h3,
+.info p {
+    margin: 10px 0px;
+}
+
+.info p {
+    font-size: 14px;
+}

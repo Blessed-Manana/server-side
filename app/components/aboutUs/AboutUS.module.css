@@ -1,0 +1,63 @@
+.aboutContainer * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.aboutContainer {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url(../../../public/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 100px 0px;
+}
+
+
+
+.linkbtn {
+    padding: 5px;
+    margin: 0px 5px;
+    font-weight: 500;
+    width: 150px;
+    background-color: transparent;
+    font-size: 16px;
+    border: 3px solid #fff !important;
+    border-radius: 25px !important;
+    color: #fff !important;
+    text-decoration: none;
+    text-align: center;
+    transition: ease-in-out 0.8s;
+}
+
+.linkbtn:hover {
+    background-color: #fff;
+    color: #be185d !important;
+    cursor: pointer;
+}
+
+.aboutText{
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+
+.aboutP{
+    border: 2px solid #bbbbbbb7;
+    max-width: 500px;
+    padding: 16px !important;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+    margin: 5px 5px;
+    height: 0%;
+}
+
+.aboutP li{
+    margin: 8px 15px;
+}
+
+.fadeText{
+    color: #d1d1d1;
+}

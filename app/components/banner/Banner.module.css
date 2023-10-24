@@ -1,0 +1,50 @@
+.banner {
+    height: 90vh;
+    width: 100%;
+    background-image: url(../../../public/ECG\ Management\ Consultants\ -\ Healthcare\ Advisors.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.add{
+    width: 28%;
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    background-color: #08080875;
+    padding: 16px;
+    box-shadow: 1px 2px 3px #000;
+}
+
+.addText{
+    font-size: 27px !important;
+    padding: 8px;
+    background-color: #000000b0;
+    border-radius: 10px;
+    font-weight: 500 !important;
+    font-family: 'Lobster', cursive;
+    color: transparent;
+    text-shadow: 1px 1px 1px #68626200, 0 0 0 #ffffffd3;
+}
+
+.addline{
+    width: 40%;
+    height: 7px;
+    background-color: #ffffff86;
+    margin: 10px 0px 50px;
+    border-radius: 50px;
+}
+
+.add img{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    height: 200px;
+}
+

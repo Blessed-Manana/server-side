@@ -1,0 +1,20 @@
+.block {
+    padding: 10px;
+    box-shadow: 1px 2px 3px #aaa9a99f;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 10px;
+}
+
+.block h2 {
+    font-size: 17.5px;
+    margin-bottom: 10px;
+    font-family: 'Lobster', cursive;
+    color: transparent;
+    text-shadow: 1px 1px 1px #68626200, 0 0 0 #7979798f;
+}
+
+.jokeBlock {
+    min-width: 300px;
+    max-width: 450px;
+}
