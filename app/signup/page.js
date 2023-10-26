@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import styles from "../components/loginForm/LoginForm.module.css";
@@ -23,7 +23,43 @@ import { FiMail, FiLock, FiUser, FiCalendar } from 'react-icons/fi'
 import { Dna } from 'react-loader-spinner'
 import axios from "axios"
 
+
 const Signup = () => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [password, setPassword] = useState("");
+
+  
+  const handleSubmit = (values, { setSubmitting }) => {
+    console.log(values);
+    
+    const userData = {
+      email: values.email,
+      password: values.password,
+      name: values.name,
+      dateOfBirth: values.dateOfBirth,
+    };
+
+    const configuration = {
+      method: 'post',
+      url: 'http://localhost:8081/signup',
+      data: userData,
+    };
+
+    axios(configuration)
+      .then((response) => {
+        console.log('Registration successful:', response.data);
+        window.location.href = '/welcomePage';
+      })
+      .catch((error) => {
+        console.error('Registration failed:', error);
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
+  };
+
   return (
     <StyledContainer className={styles.StyledContainer}>
       <StyledFormArea className={styles.formArea}>
@@ -36,7 +72,6 @@ const Signup = () => {
             confirmPassword: "",
             dateOfBirth: "",
             name: "",
-            name: "",
           }}
           validationSchema={
             Yup.object({
@@ -47,12 +82,8 @@ const Signup = () => {
               confirmPassword: Yup.string().required("Required").oneOf([Yup.ref("password")], "Passwords must match"),
             })
           }
-
-          onSubmit={(val, { setSubmitting }) => {
-            console.log(val)
-            
-          }}
-
+          onSubmit={handleSubmit}
+          
         >
           {({ isSubmitting }) => (
             <Form>

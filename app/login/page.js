@@ -19,10 +19,32 @@ import * as Yup from "yup";
 import { FiMail, FiLock } from 'react-icons/fi';
 import { Dna } from 'react-loader-spinner';
 import { Link } from "@mui/material";
+import axios from "axios";
 
 const Login = () => {
     const navigateToDashboard = () => {
         window.location.href = '/welcomePage';
+    };
+
+    const handleSubmit = (values, { setSubmitting }) => {
+        console.log(values);
+
+        const userData = {
+            email: values.email,
+            password: values.password,
+        };
+
+        axios.post('http://localhost:8081/login', userData)
+            .then((response) => {
+                console.log('Login successful:', response.data);
+                // Optionally, you can store the JWT token in a cookie or local storage for future authenticated requests.
+            })
+            .catch((error) => {
+                console.error('Login failed:', error);
+            })
+            .finally(() => {
+                setSubmitting(false);
+            });
     };
 
     return (
@@ -42,18 +64,10 @@ const Login = () => {
                         })
                     }
 
-                    onSubmit={(e, val, { setSubmitting }) => {
-                        e.preventDefault();
-
-                        console.log(val);
-                        setTimeout(() => {
-
-                            navigateToDashboard();
-                        }, 1000);
-                    }}
+                    onSubmit={handleSubmit}
                 >
                     {({ isSubmitting }) => (
-                        <Form action="/login" method='post'>
+                        <Form action="/login">
                             <TextInput
                                 className={styles.input}
                                 name="email"
@@ -72,7 +86,7 @@ const Login = () => {
                                 icon={<FiLock />}
                             />
                             <ButtonGroup>
-                                {!isSubmitting && <StyledFromButton  type="sumbit">Login</StyledFromButton>}
+                                {!isSubmitting && <StyledFromButton type="sumbit">Login</StyledFromButton>}
 
                                 {isSubmitting && (
                                     <Dna

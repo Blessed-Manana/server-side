@@ -149,9 +149,7 @@ export const ExtraText = styled.p`
   margin-top: 10px;
 `;
 
-// export const TextLink = styled(Link)`
 
-// `;
 
 export const StyledIcon = styled.p`
   color: ${colors.dark1};
