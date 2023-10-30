@@ -2,17 +2,31 @@ import React, { useState, useEffect } from 'react';
 import styles from "./UpdateProfile.module.css"
 import { TbCameraPlus } from 'react-icons/tb'
 import { Grid, Typography } from "@mui/material";
+import axios from "axios"
+
 
 const UpdateProfile = () => {
     const [profilePic, setProfilePic] = useState('person-combination.svg')
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
 
     useEffect(() => {
         const savedProfilePic = localStorage.getItem('profilePic');
         if (savedProfilePic) {
             setProfilePic(savedProfilePic);
         }
-    }, []);
 
+        axios.get('http://localhost:8081/getUser')
+            .then((res) => {
+                console.log("NameData: " + res.data.name)
+                setUsername(res.data.name)
+                console.log("EmailData: " + res.data.email)
+                setEmail(res.data.email)
+            })
+            .catch((error) => {
+                console.error('Error fetching username: ', error);
+            });
+    }, []);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -38,13 +52,12 @@ const UpdateProfile = () => {
                 <label htmlFor="file" className={styles.uploadbtn}>
                     <TbCameraPlus className={styles.camera} />
                 </label>
-                <h2 id="username">Name</h2>
+                <h2>Name {username}</h2>
             </Grid>
             <Grid className={styles.info}>
-                <h3>Your Campany Name:</h3>
-                <p id="CompanyName">Campany Name</p>
                 <h3>Your Email:</h3>
-                <p id="emailInput">Email</p>
+                <p>{email}</p>
+                <button>Console</button>
             </Grid>
         </Grid>
     );

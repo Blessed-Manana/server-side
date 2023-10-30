@@ -12,6 +12,10 @@ import {
 import NavBar from "../navBar/Navbar";
 
 const About = () => {
+    const logout = () => {
+    
+    }
+
     return (
         <StyledContainer className={styles.aboutContainer}>
             <Box>
@@ -53,7 +57,7 @@ const About = () => {
                     <Typography className={styles.aboutP}>Thank you for choosing our Task Manager to simplify your daily task management. We're excited to be a part of your journey to enhanced productivity!</Typography>
                 </Grid>
                 <ButtonGroup>
-                    <Link href="/login" ><Button variant="outlined" className={styles.linkbtn}>Log out</Button></Link>
+                    <Link href="/login" onClick={() => logout()}><Button variant="outlined" className={styles.linkbtn}>Log out</Button></Link>
                 </ButtonGroup>
             </Box>
         </StyledContainer>

@@ -1,5 +1,5 @@
 "use client"
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import styles from "../components/loginForm/LoginForm.module.css"
 import {
     StyledContainer,
@@ -22,9 +22,9 @@ import { Link } from "@mui/material";
 import axios from "axios";
 
 const Login = () => {
-    const navigateToDashboard = () => {
-        window.location.href = '/welcomePage';
-    };
+    const [login, setLoginUp] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
 
     const handleSubmit = (values, { setSubmitting }) => {
         console.log(values);
@@ -37,11 +37,18 @@ const Login = () => {
         axios.post('http://localhost:8081/login', userData)
             .then((response) => {
                 console.log('Login successful:', response.data);
-                // Optionally, you can store the JWT token in a cookie or local storage for future authenticated requests.
+                window.location.href = '/home';
+                setLoginUp(true)
             })
             .catch((error) => {
                 console.error('Login failed:', error);
-            })
+                setLoginUp(false);
+                if (error.response && error.response.status === 404) {
+                    setErrorMessage("Email not recognised, please sign in");
+                } else {
+                    setErrorMessage("Invalid password");
+                }
+            }) 
             .finally(() => {
                 setSubmitting(false);
             });
@@ -52,6 +59,9 @@ const Login = () => {
             <StyledFormArea className={styles.formArea}>
                 <img className={styles.logo} src="FcLogo.png" alt="FcLogo.png" />
                 <StyledTitle colors={colors.theme} size={30}>Memeber Login</StyledTitle>
+                {errorMessage && (
+                    <p className={styles.textDanger}>{errorMessage}</p>
+                )}
                 <Formik
                     initialValues={{
                         email: "",

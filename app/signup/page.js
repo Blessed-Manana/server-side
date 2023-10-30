@@ -25,15 +25,13 @@ import axios from "axios"
 
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [password, setPassword] = useState("");
+  const [signup, setSignup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  
+
   const handleSubmit = (values, { setSubmitting }) => {
     console.log(values);
-    
+
     const userData = {
       email: values.email,
       password: values.password,
@@ -48,12 +46,16 @@ const Signup = () => {
     };
 
     axios(configuration)
-      .then((response) => {
-        console.log('Registration successful:', response.data);
+      .then((res) => {
+        console.log('Registration successful:', res.data);
         window.location.href = '/welcomePage';
+        setSignup(true)
       })
       .catch((error) => {
         console.error('Registration failed:', error);
+        if (error.response && error.response.status !== 404) {
+          setErrorMessage("Email has been already signed in");
+        }
       })
       .finally(() => {
         setSubmitting(false);
@@ -83,7 +85,7 @@ const Signup = () => {
             })
           }
           onSubmit={handleSubmit}
-          
+
         >
           {({ isSubmitting }) => (
             <Form>
@@ -130,6 +132,9 @@ const Signup = () => {
                 placeholder="Confirm Pa**word"
                 icon={<FiLock />}
               />
+              {errorMessage && (
+                <p className={styles.textDanger}>{errorMessage}</p>
+              )}
               <ButtonGroup>
                 {!isSubmitting && <StyledFromButton type="sumbit">Sign Up</StyledFromButton>}
 
