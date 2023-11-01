@@ -17,7 +17,8 @@ const UpdateProfile = () => {
             setProfilePic(savedProfilePic);
         }
         console.log("useEffect is runnig")
-        fetch("http://localhost:8081/user/:userId")
+        let email = localStorage.getItem("email")
+        fetch(`http://localhost:8081/getUser/${email}`)
             .then((res) => {
                 if (res.status == 200) {
                     return res.json()
