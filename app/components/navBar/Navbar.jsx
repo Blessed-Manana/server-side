@@ -9,7 +9,6 @@ import { SiTask } from 'react-icons/si'
 
 const NavBar = () => {
 
-
     return (
             <nav id="navbar" className={styles.nav}>
                 <Grid className={styles.navOption}>
@@ -28,7 +27,7 @@ const NavBar = () => {
                     </Link>
                     <Link href="/aboutsus" className={styles.navLink}>
                         <BsMicrosoftTeams className={styles.navIcons}/>
-                        About us
+                        About
                     </Link>
                 </Grid>
                 <Grid className={styles.proflieIcon}>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "./TaskManager.module.css";
 import { Grid, Typography, Button } from "@mui/material";
 
+
 const TaskManager = () => {
     const initialDoing = [
         { time: '9 AM', event: '' },
@@ -68,11 +69,11 @@ const TaskManager = () => {
         setDone([]);
     }
 
+
     return (
         <Grid className={styles.taskManager}>
             <Grid className={styles.date}>
                 <h1>Daily Task Management</h1>
-                <p>{`${new Date().getFullYear()}COMPANY`}</p>
             </Grid>
             <Grid className={styles.workingOn}>
                 <Grid className={styles.box}>

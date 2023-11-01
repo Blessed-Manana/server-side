@@ -1,7 +1,5 @@
 "use client"
 import { createContext, useState, useEffect } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
 import styles from "../components/loginForm/LoginForm.module.css";
 import {
   StyledContainer,

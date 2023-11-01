@@ -3,6 +3,7 @@ import styles from "./UpdateProfile.module.css"
 import { TbCameraPlus } from 'react-icons/tb'
 import { Grid, Typography } from "@mui/material";
 import axios from "axios"
+import jwt_decode from "jwt-decode";
 
 
 const UpdateProfile = () => {
@@ -15,18 +16,28 @@ const UpdateProfile = () => {
         if (savedProfilePic) {
             setProfilePic(savedProfilePic);
         }
-
-        axios.get('http://localhost:8081/getUser')
+        console.log("useEffect is runnig")
+        fetch("http://localhost:8081/user/:userId")
             .then((res) => {
-                console.log("NameData: " + res.data.name)
-                setUsername(res.data.name)
-                console.log("EmailData: " + res.data.email)
-                setEmail(res.data.email)
+                if (res.status == 200) {
+                    return res.json()
+                } else {
+                    console.log("Response is not found")
+                }
+                console.log("data: " + res.data.user);
+
+            }).then((data) => {
+                // setUsername(res.data.user)
+                // setEmail(res.data.user)
+                console.log("data ==>", data)
             })
             .catch((error) => {
+                // Handle errors here
                 console.error('Error fetching username: ', error);
             });
     }, []);
+
+    console.log(username, email)
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -52,15 +63,15 @@ const UpdateProfile = () => {
                 <label htmlFor="file" className={styles.uploadbtn}>
                     <TbCameraPlus className={styles.camera} />
                 </label>
-                <h2>Name {username}</h2>
+                <h2>Name {username.name}</h2>
             </Grid>
             <Grid className={styles.info}>
                 <h3>Your Email:</h3>
-                <p>{email}</p>
-                <button>Console</button>
+                <p>{email.email}</p>
             </Grid>
         </Grid>
     );
 }
 
 export default UpdateProfile;
+

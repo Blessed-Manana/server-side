@@ -14,7 +14,6 @@ import axios from "axios"
 
 const WelcomePage = () => {
     const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
 
     useEffect(() => {
         axios.get('http://localhost:8081/getUser')
@@ -22,7 +21,6 @@ const WelcomePage = () => {
                 if (res.data.length > 0) {
                     const lastUser = res.data[res.data.length - 1];
                     setUsername(lastUser.name);
-                    setEmail(lastUser.email);
                 } else {
                     console.error('No user data available');
                 }
