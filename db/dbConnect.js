@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const offline = "mongodb://kees:simplyme@localhost:27017/?authMechanism=DEFAULT";
-const online = "mongodb+srv://Kees:ThisPassword@cluster1.navh7lo.mongodb.net/";
+const online = "mongodb+srv://mananablessed01:EkLZyFhvCkFda55o@cluster0.k8q59ie.mongodb.net/";
 
 async function dbConnect() {
     const tlsOptions = {
@@ -16,7 +16,6 @@ async function dbConnect() {
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            // useCreateIndex: true,
         }
     )
         .then(() => {
